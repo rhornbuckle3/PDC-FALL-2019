@@ -1,7 +1,7 @@
 #include <omp.h>
 #include <stdio.h>
 #include <stdlib.h>
-
+#include <math.h> //for log2 and pow and ceil
 int main(int argc,  char *argv[]){
     int nthreads, tid;
     int P=4; //number of threads
@@ -14,9 +14,10 @@ int main(int argc,  char *argv[]){
     input=new long[N];
     output=new long(P);
 
-    for(int i=0;i<N;i++) input[i]=randn();
+    for(int i=0;i<N;i++) input[i]=rand();
     omp_set_num_threads(P);
-    #pragma omp parallel private(nthreads, tid){
+    #pragma omp parallel private(nthreads, tid)
+    {
         int start=0,stop=0,size=0;
         tid=omp_get_thread_num();
         size=N/P;
@@ -37,12 +38,13 @@ int main(int argc,  char *argv[]){
     
     //delete input;
     //delete output;
-    #pragma omp parallel private(tid,nthreads){
+    #pragma omp parallel private(tid,nthreads)
+    {
         tid=omp_get_thread_num();
 
         //outNext=
-        int next=outout[tid];
-        for(int i=0;i<lg(p);i++)
+        int next=output[tid];
+        for(int i=0;i<log2(P);i++)
         next+=output[tid+2^i];
         #pragma omp barrier
     }
