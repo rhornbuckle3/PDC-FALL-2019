@@ -39,12 +39,14 @@ int main(int argc,  char *argv[]){
         }
         //Printing the input
         //printf("%s","Input Array\n");
-        //for(i=0;i<N;i++){
-        //    printf("%d : %ld\n",i,a[i]);
-        //}
+        //for(i=0;i<N;i++)printf("%d : %ld\n",i,a[i]);
         //serial prefix sum
         serial_time=clock();
-        for(int i=1;i<N;i++) b[i]=b[i-1]+b[i];
+        omp_set_num_threads(1);
+        #pragma omp parallel private(nthreads,tid)
+        {
+            for(int i=1;i<N;i++) b[i]=b[i-1]+b[i];
+        }
         serial_time=clock()-serial_time;
         //parallel prefix sum
         parallel_time=clock();
