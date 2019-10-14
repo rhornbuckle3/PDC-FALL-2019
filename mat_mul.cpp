@@ -3,7 +3,7 @@
 #include <stdlib.h>
 #include <math.h> //for log2 and pow and ceil
 #include <time.h> //for performance comparisons
-//clang++ -Xpreprocessor -fopenmp mat_mul.cpp -o pps -lomp 
+//clang++ -Xpreprocessor -fopenmp mat_mul.cpp -o mat_mul -lomp 
 //^macOS
 
 //targeting N time complexity with a large number of threads
