@@ -6,21 +6,39 @@
 //clang++ -Xpreprocessor -fopenmp stochastic_gradient_descent.cpp -o pps -lomp 
 //^macOS
 
-//serial sigmoid on 8 inputs
-double mat_mul(double *mat_one,double *mat_two){
+
+double vec_mul(double *mat_one,double *mat_two){
     //fill in here
 
     double result;
     return result;
 }
-
-int main(){
-    double *argument;
+double sigmoid(double *mat_one,double *mat_two){
+    double sigmoid_input=vec_mul(mat_one,mat_two);
+    double sigmoid_output = 1/(1+exp(sigmoid_input)*-1);
+    return sigmoid_output;
+}
+//serial sigmoid on 8 inputs
+double* fill_inputs(){
+    double *argument,*weights;
     argument = new double[8];
-    double *weights;
     weights = new double[8];
     for(int i=0;i<8;i++)weights[i]=(rand()/(clock())%50);
     for(int i=0;i<8;i++)argument[i]=(rand()/(clock())%50);
-    double sigmoid_input=mat_mul(argument,weights);
-    double sigmoid = 1/(1+exp(sigmoid_input));
+    return argument,weights;
 }
+double* serial_descent(){
+    double *argument,*weights;
+    argument,weights = fill_inputs();
+    double sigmoid_serial = sigmoid(argument, weights);
+    
+    return weights;
+}
+
+int main(int argc,  char *argv[]){
+    
+    
+    
+    return 0;   
+}
+
