@@ -7,15 +7,19 @@ int location(double ***array,int row, int col, int depth){
     int locale = 2000 + row * col_num * depth_num + col * depth_num + depth;
     return locale;
 }
-int main(){
+double *** array_constructor(int rows , int cols, int depth){
     double ***array;
-    array = new double**[3];
+    array = new double**[rows];
     for(int i = 0; i < 5; i++){
-        array[i] = new double*[2];
+        array[i] = new double*[cols];
         for(int j = 0; j < 5; j++){
-            array[i][j] = new double[5];
+            array[i][j] = new double[depth];
         }
     }
+    return array;
+}
+int main(){
+    double ***array = array_constructor(3,2,5);
     cout << location(array,1,1,4);
     cout << '\n';
     return 0;

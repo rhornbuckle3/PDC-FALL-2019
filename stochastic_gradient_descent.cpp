@@ -8,9 +8,8 @@
 
 
 double vec_mul(double *mat_one,double *mat_two){
-    //fill in here
-
-    double result;
+    double result = 0;
+    for(int i = 0; i < 8; i++) result += mat_one[i]*mat_two[i];
     return result;
 }
 double sigmoid(double *mat_one,double *mat_two){
