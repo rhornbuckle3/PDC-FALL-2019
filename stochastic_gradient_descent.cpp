@@ -32,9 +32,17 @@ double* serial_descent(int N){
     double *argument,*weights;
     argument = fill_array(N);
     weights = fill_array(N);
-    double sigmoid_serial = sigmoid(argument, weights);
-    cout << sigmoid_serial;
-    cout << '\n';
+    
+    while(true){
+        //calculate gradient here
+        double sigmoid_serial = sigmoid(argument, weights);
+        cout << sigmoid_serial;
+        cout << '\n';
+        double cost = 1/2*pow((1-sigmoid_serial),2);
+        if(cost == 0){
+            break;
+        }
+    }
     return weights;
 }
 
@@ -46,8 +54,9 @@ int main(int argc,  char *argv[]){
     }else{
         N = 8;
     }
+    clock_t serial_time=clock();
     serial_descent(N);
-    
+    serial_time = clock() - serial_time;
     return 0;   
 }
 
