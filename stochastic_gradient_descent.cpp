@@ -3,6 +3,8 @@
 #include <stdlib.h>
 #include <math.h> 
 #include <time.h> //for performance comparisons
+#include <iostream>
+using namespace std;
 //clang++ -Xpreprocessor -fopenmp stochastic_gradient_descent.cpp -o pps -lomp 
 //^macOS
 
@@ -10,6 +12,8 @@
 double vec_mul(double *mat_one,double *mat_two){
     double result = 0;
     for(int i = 0; i < 8; i++) result += mat_one[i]*mat_two[i];
+    cout << result;
+    cout << '\n';
     return result;
 }
 double sigmoid(double *mat_one,double *mat_two){
@@ -18,25 +22,31 @@ double sigmoid(double *mat_one,double *mat_two){
     return sigmoid_output;
 }
 //serial sigmoid on 8 inputs
-double* fill_inputs(){
-    double *argument,*weights;
-    argument = new double[8];
-    weights = new double[8];
-    for(int i=0;i<8;i++)weights[i]=(rand()/(clock())%50);
-    for(int i=0;i<8;i++)argument[i]=(rand()/(clock())%50);
-    return argument,weights;
+double* fill_array(int N){
+    double *array;
+    array = new double[N];
+    for(int i=0;i<N;i++)array[i]=(rand()/(clock())%5);
+    return array;
 }
-double* serial_descent(){
+double* serial_descent(int N){
     double *argument,*weights;
-    argument,weights = fill_inputs();
+    argument = fill_array(N);
+    weights = fill_array(N);
     double sigmoid_serial = sigmoid(argument, weights);
-    
+    cout << sigmoid_serial;
+    cout << '\n';
     return weights;
 }
 
 int main(int argc,  char *argv[]){
-    
-    
+    //serial test
+    int N;
+    if(argc>1){
+        N = atoi(argv[1]);
+    }else{
+        N = 8;
+    }
+    serial_descent(N);
     
     return 0;   
 }
