@@ -1,8 +1,5 @@
 #include <omp.h> //parallel library
-#include <stdio.h>
-#include <stdlib.h>
 #include <math.h> //for log2 and pow and ceil
-#include <time.h> //for performance comparisons
 #include <iostream>
 using namespace std;
 //clang++ -Xpreprocessor -fopenmp gregory_leibniz_pi.cpp -o gregory_leibniz_pi -lomp 

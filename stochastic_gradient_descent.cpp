@@ -34,7 +34,7 @@ double* serial_descent(int N){
     weights = fill_array(N);
     
     while(true){
-        //calculate gradient here
+        //calculate gradient here sigmoid*(1-sigmoid)
         double sigmoid_serial = sigmoid(argument, weights);
         cout << sigmoid_serial;
         cout << '\n';
