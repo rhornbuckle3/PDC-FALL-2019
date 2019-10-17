@@ -21,27 +21,41 @@ double sigmoid(double *mat_one,double *mat_two){
     double sigmoid_output = 1/(1+exp(sigmoid_input)*-1);
     return sigmoid_output;
 }
-//serial sigmoid on 8 inputs
+//serial sigmoid on N inputs
 double* fill_array(int N){
     double *array;
     array = new double[N];
     for(int i=0;i<N;i++)array[i]=(rand()/(clock())%5);
     return array;
 }
-double* serial_descent(int N){
+void subtract_array(double *array,double decrease, int size){
+    for(int i = 0; i < size; i++){
+        array[i] = array[i] - decrease;
+    }
+    return;
+}
+void print_weights(double* array, int size){
+    for(int i = 0; i < size; i++){
+        cout << array[i];
+        cout << ' ';
+    }
+    cout << '\n';
+}
+double* serial_descent(int N, float learning_step){
     double *argument,*weights;
     argument = fill_array(N);
     weights = fill_array(N);
-    
     while(true){
-        //calculate gradient here sigmoid*(1-sigmoid)
         double sigmoid_serial = sigmoid(argument, weights);
-        cout << sigmoid_serial;
-        cout << '\n';
-        double cost = 1/2*pow((1-sigmoid_serial),2);
+        double gradient =1.0 - sigmoid_serial*(1.0-sigmoid_serial);   
+        double decrease = learning_step*gradient;
+        subtract_array(weights,decrease,N);   
+        print_weights(weights, N);
+        double cost = 0.5*pow((1-sigmoid(argument, weights)),2);
         if(cost == 0){
             break;
         }
+        //likely will need another method for breaking the descent
     }
     return weights;
 }
@@ -55,7 +69,7 @@ int main(int argc,  char *argv[]){
         N = 8;
     }
     clock_t serial_time=clock();
-    serial_descent(N);
+    serial_descent(N, 0.01);
     serial_time = clock() - serial_time;
     return 0;   
 }

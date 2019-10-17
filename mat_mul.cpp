@@ -5,8 +5,7 @@
 #include <time.h> //for performance comparisons
 //clang++ -Xpreprocessor -fopenmp mat_mul.cpp -o mat_mul -lomp 
 //^macOS
-
-//targeting N time complexity with a large number of threads
+//assumes same size matrices
 int main(int argc,  char *argv[]){
     int nthreads, tid;
     int N=8; //input size
