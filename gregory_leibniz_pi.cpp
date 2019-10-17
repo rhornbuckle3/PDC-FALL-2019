@@ -39,7 +39,12 @@ int main(int argc, char* argv[]){
             #pragma omp parallel private(nthreads,tid)
             {
                 tid=omp_get_thread_num();
-                pi_sum+=(1/(2*(i*P+tid)+1));
+                double index_p = (N-remainder)+tid+1;
+                double calculation_top = pow(-1.0,index_p);
+                double calculation_bottom = (2.0*(index_p)+1.0);
+                double calculation = calculation_top/calculation_bottom;
+                #pragma omp atomic
+                pi_sum+=calculation;
             }
         }
     }
