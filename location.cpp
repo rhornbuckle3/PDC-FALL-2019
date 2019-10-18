@@ -1,3 +1,6 @@
+//Russell Hornbuckle
+//2019
+//location of an element in memory in a 3 dimensional array that is hypothetically initialized at 2000
 #include <iostream>
 using namespace std;
 int location(double ***array,int row, int col, int depth, int row_num, int col_num,int depth_num){

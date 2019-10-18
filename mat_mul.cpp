@@ -1,3 +1,6 @@
+//Russell Hornbuckle
+//2019
+//matrix multiplication of 2 same sized N by N arrays in parallel
 #include <omp.h> //parallel library
 #include <stdio.h>
 #include <stdlib.h>
@@ -8,7 +11,12 @@
 //assumes same size matrices
 int main(int argc,  char *argv[]){
     int nthreads, tid;
-    int N=8; //input size
+    int N;
+    if(argc>1){
+        N = atoi(argv[1]);
+    }else{
+        N = 16;
+    }//input size
     int P=N*N; //number of threads
     int *C,*A,*B;
     

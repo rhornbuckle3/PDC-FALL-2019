@@ -1,3 +1,6 @@
+//Russell Hornbuckle
+//2019
+//sieve of eratosthenes
 #include <omp.h> //parallel library
 #include <math.h> //for log2 and pow and ceil
 #include <iostream>

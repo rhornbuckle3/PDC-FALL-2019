@@ -1,3 +1,6 @@
+//Russell Hornbuckle
+//2019
+//gradient descent on sigmoid in serial, parallel, and CUDA - currently implementing in parallel and testing serial implementaion
 #include <omp.h> //parallel library
 #include <stdio.h>
 #include <stdlib.h>

@@ -1,3 +1,6 @@
+//Russell Hornbuckle
+//2019
+//parallel prefix sum on an array of N elements
 #include <omp.h> //parallel library
 #include <stdio.h>
 #include <stdlib.h>
