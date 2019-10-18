@@ -24,7 +24,7 @@ double* fill_array(int N){
     array = new double[N];
     for(int i = 0; i < N; i++){
         array[i] = (double)(rand()*clock())/7.3;
-        array[i] = (rand()%10)+fmod(array[i],3);
+        array[i] = (rand()*clock()%30)+fmod(array[i],3);
     }
     return array;
 }
