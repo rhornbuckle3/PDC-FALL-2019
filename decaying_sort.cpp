@@ -17,12 +17,15 @@ Obviously, it's impossible to get a perfect order. How would we go about getting
 #include <math.h> 
 #include <time.h> //for performance comparisons
 #include <iostream>
-using namespace std;
+
 
 double* fill_array(int N){
     double *array;
     array = new double[N];
-    for(int i=0;i<N;i++)array[i]=(rand()/(clock())%5);
+    for(int i = 0; i < N; i++){
+        array[i] = (double)(rand()*clock())/7.3;
+        array[i] = (rand()%10)+fmod(array[i],3);
+    }
     return array;
 }
 int main(int argc,  char *argv[]){
@@ -33,5 +36,9 @@ int main(int argc,  char *argv[]){
         N = 32;
     }
     double *array = fill_array(N);
-    
+    for(int i = 0; i<N;i++){
+        std::cout << array[i];
+        std::cout << '\n';
+    }
+
 }
