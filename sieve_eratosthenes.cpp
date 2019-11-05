@@ -24,6 +24,14 @@ int main(int argc, char* argv[]){
     memset(list_primes,true,sizeof(list_primes));
     for(int i = 2; i*i<N; i++){
         if(list_primes[i]){
+            #pragma omp parallel private(nthreads,tid)
+            {
+                #pragma omp for
+                for(int j = i*i; j<=N; j+=i){
+                    tid = omp_get_thread_num();
+                    list_primes[j+tid] = false;
+                }
+            }
             for(int j = i*i; j < (N-i*i)/P;j+=i*P){
                 //gonna probably swap over to omp for to make this easier on me
                 #pragma omp parallel private(nthreads,tid)

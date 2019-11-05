@@ -4,7 +4,6 @@
 #include <omp.h> //parallel library
 #include <math.h> //for log2 and pow and ceil
 #include <iostream>
-using namespace std;
 //clang++ -Xpreprocessor -fopenmp gregory_leibniz_pi.cpp -o gregory_leibniz_pi -lomp 
 //^macOS
 
@@ -49,7 +48,7 @@ int main(int argc, char* argv[]){
         }
     }
     pi_sum = pi_sum*4;
-    cout << pi_sum;
-    cout << '\n';
+    std::cout << pi_sum;
+    std::cout << '\n';
 
 }
