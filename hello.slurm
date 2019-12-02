@@ -6,7 +6,7 @@
 
 #SBATCH --ntasks-per-node 8
 #SBATCH --time=10:00
-#SBATCH --nodes 1
+#SBATCH --nodes 9
 #SBATCH -p qBF
 #SBATCH--mem-per-cpu=100
 
