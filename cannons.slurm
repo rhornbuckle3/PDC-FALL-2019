@@ -1,12 +1,12 @@
 #!/bin/bash
 
-#SBATCH --job-name=addition_mpi
+#SBATCH --job-name=MPI_CANNONS
 #SBATCH --output=res.txt
 #SBATCH -e test.err
 
 #SBATCH --ntasks-per-node 1
 #SBATCH --time=10:00
-#SBATCH --nodes 9
+#SBATCH --nodes 10
 #SBATCH -p qCDER
 #SBATCH--mem-per-cpu=100
 #environment

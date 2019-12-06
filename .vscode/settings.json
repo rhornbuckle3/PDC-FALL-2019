@@ -5,6 +5,7 @@
         "iostream": "cpp",
         "cmath": "cpp",
         "__tuple": "cpp",
-        "array": "cpp"
+        "array": "cpp",
+        "iterator": "cpp"
     }
 }

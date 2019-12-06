@@ -56,7 +56,6 @@ main(int argc, char *argv[])
             sum_two+=a[i];
         }
         printf("%d",sum);
-        fflush(stdout);
     }else{
         //worker nodes
         long *sum = 0;
